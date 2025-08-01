@@ -30,7 +30,7 @@ interface AddTaskResponse {
 }
 
 export const addTaskTool: Tool = {
-  name: 'mcp_mews-mcp_addTask',
+  name: 'addTask',
   description: 'Adds a new task to the enterprise, optionally to a specified department',
   inputSchema: {
     type: 'object',

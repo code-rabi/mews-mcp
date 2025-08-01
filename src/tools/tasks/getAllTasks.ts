@@ -42,8 +42,8 @@ interface GetAllTasksResponse {
 }
 
 export const getAllTasksTool: Tool = {
-  name: 'mcp_mews-mcp_getAllTasks',
-  description: 'Returns all tasks of the enterprise, filtered by identifiers or other filters',
+  name: 'getAllTasks',
+  description: 'Returns all tasks of the enterprise, filtered by identifiers or other filters. Note: At least one filter must be provided (TaskIds, DepartmentIds, ServiceOrderIds, CreatedUtc, ClosedUtc, or DeadlineUtc). All date ranges have a maximum interval of 3 months.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -99,7 +99,8 @@ export const getAllTasksTool: Tool = {
         description: 'Pagination settings with cursor support'
       }
     },
-    required: ['Limitation']
+    required: ['Limitation'],
+    additionalProperties: false
   },
 
   async execute(config: any, args: GetAllTasksParams) {
