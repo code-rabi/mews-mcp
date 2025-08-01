@@ -21,6 +21,7 @@ import { deleteCompaniesTool } from './companies/deleteCompanies.js';
 import { getAllReservationsTool } from './reservations/getAllReservations.js';
 import { addReservationTool } from './reservations/addReservation.js';
 import { updateReservationsTool } from './reservations/updateReservations.js';
+import { cancelReservationsTool } from './reservations/cancelReservations.js';
 
 // Configuration tools
 import { getConfigurationTool } from './configuration/getConfiguration.js';
@@ -36,10 +37,33 @@ import { getAllBillsTool } from './finance/getAllBills.js';
 import { getAllAccountingItemsTool } from './finance/getAllAccountingItems.js';
 import { addAccountingItemsTool } from './finance/addAccountingItems.js';
 
+// Payment tools
+import { addPaymentTool } from './payments/addPayment.js';
+import { chargeCreditCardTool } from './payments/chargeCreditCard.js';
+import { getAllPaymentsTool } from './payments/getAllPayments.js';
+
 // Services tools
 import { getAllServicesTool } from './services/getAllServices.js';
 import { getAllSpacesTool } from './services/getAllSpaces.js';
 import { getAllSpaceCategoriesTool } from './services/getAllSpaceCategories.js';
+
+// Account Notes tools
+import { getAllAccountNotesTool } from './accountNotes/getAllAccountNotes.js';
+import { addAccountNotesTool } from './accountNotes/addAccountNotes.js';
+
+// Rates tools
+import { getAllRatesTool } from './rates/getAllRates.js';
+import { getRatePricingTool } from './rates/getRatePricing.js';
+
+// Export tools
+import { exportAccountingItemsTool } from './exports/exportAccountingItems.js';
+import { exportReservationsTool } from './exports/exportReservations.js';
+
+// Availability tools
+import { getAllAvailabilityBlocksTool } from './availability/getAllAvailabilityBlocks.js';
+
+// Voucher tools
+import { addVouchersTool } from './vouchers/addVouchers.js';
 
 // Registry of all available tools
 export const allTools: Tool[] = [
@@ -64,6 +88,7 @@ export const allTools: Tool[] = [
   getAllReservationsTool,
   addReservationTool,
   updateReservationsTool,
+  cancelReservationsTool,
   
   // Configuration tools
   getConfigurationTool,
@@ -79,10 +104,33 @@ export const allTools: Tool[] = [
   getAllAccountingItemsTool,
   addAccountingItemsTool,
   
+  // Payment tools
+  addPaymentTool,
+  chargeCreditCardTool,
+  getAllPaymentsTool,
+  
   // Services tools
   getAllServicesTool,
   getAllSpacesTool,
   getAllSpaceCategoriesTool,
+  
+  // Account Notes tools
+  getAllAccountNotesTool,
+  addAccountNotesTool,
+  
+  // Rates tools
+  getAllRatesTool,
+  getRatePricingTool,
+  
+  // Export tools
+  exportAccountingItemsTool,
+  exportReservationsTool,
+  
+  // Availability tools
+  getAllAvailabilityBlocksTool,
+  
+  // Voucher tools
+  addVouchersTool,
 ];
 
 // Tool lookup map for fast access during execution
