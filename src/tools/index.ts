@@ -65,6 +65,10 @@ import { getAllAvailabilityBlocksTool } from './availability/getAllAvailabilityB
 // Voucher tools
 import { addVouchersTool } from './vouchers/addVouchers.js';
 
+// Task tools
+import { getAllTasksTool } from './tasks/getAllTasks.js';
+import { addTaskTool } from './tasks/addTask.js';
+
 // Registry of all available tools
 export const allTools: Tool[] = [
   // Account tools
@@ -131,6 +135,10 @@ export const allTools: Tool[] = [
   
   // Voucher tools
   addVouchersTool,
+  
+  // Task tools
+  getAllTasksTool,
+  addTaskTool,
 ];
 
 // Tool lookup map for fast access during execution
