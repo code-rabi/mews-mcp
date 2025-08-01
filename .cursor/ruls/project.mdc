@@ -1,0 +1,9 @@
+---
+alwaysApply: true
+---
+
+
+# Project rules
+
+- Tools are managed in src/tools
+- Tools are registered in src/tools/index.ts
