@@ -4,7 +4,7 @@ import { mewsRequest } from '../../utils/http.js';
 
 export const getAllReservationsTool: Tool = {
   name: 'getAllReservations',
-  description: 'Get reservations with filters',
+  description: 'Get reservations with filters. Note: The time interval between StartUtc and EndUtc must not exceed 100 hours.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -23,6 +23,14 @@ export const getAllReservationsTool: Tool = {
         items: { type: 'string' },
         description: 'Filter by reservation states (Confirmed, Canceled, etc.)'
       },
+      StartUtc: {
+        type: 'string',
+        description: 'Start date for search (ISO 8601)'
+      },
+      EndUtc: {
+        type: 'string',
+        description: 'End date for search (ISO 8601)'
+      },
       Limitation: {
         type: 'object',
         properties: {
@@ -31,7 +39,8 @@ export const getAllReservationsTool: Tool = {
         },
         description: 'Pagination settings'
       }
-    }
+    },
+    required: ['StartUtc', 'EndUtc']
   },
   
   async execute(config: MewsAuthConfig, args: unknown): Promise<ToolResult> {

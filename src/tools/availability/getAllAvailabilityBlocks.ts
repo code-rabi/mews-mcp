@@ -4,7 +4,7 @@ import { mewsRequest } from '../../utils/http.js';
 
 export const getAllAvailabilityBlocksTool: Tool = {
   name: 'getAllAvailabilityBlocks',
-  description: 'Returns all availability blocks (reservations blocked by rate, space category, or space) based on filter parameters',
+  description: 'Returns all availability blocks (reservations blocked by rate, space category, or space) based on filter parameters. Note: At least one filter must be provided (CreatedUtc, UpdatedUtc, CollidingUtc, AvailabilityBlockIds, or ExternalIdentifiers). The time interval must not exceed 100 hours.',
   inputSchema: {
     type: 'object',
     properties: {
