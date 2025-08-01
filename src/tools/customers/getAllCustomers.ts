@@ -4,7 +4,7 @@ import { mewsRequest } from '../../utils/http.js';
 
 export const getAllCustomersTool: Tool = {
   name: 'getAllCustomers',
-  description: 'Get customers with filters. Note: At least one filter must be provided (CustomerIds, Emails, FirstNames, LastNames, LoyaltyCodes, CompanyIds, CreatedUtc, UpdatedUtc, or DeletedUtc). If no filters are specified, defaults to ActivityStates: ["Active"] to return all active customers.',
+  description: 'Get customers with filters. Note: At least one filter must be provided (CustomerIds, Emails, FirstNames, LastNames, LoyaltyCodes, CompanyIds, CreatedUtc, UpdatedUtc, or DeletedUtc). If no filters are specified, defaults to ActivityStates: ["Active"] to return all active customers. IMPORTANT LIMITATIONS: Date range filters (CreatedUtc, UpdatedUtc, DeletedUtc) have a maximum interval of 3 months and 1 day. All array filters have specific maximum item limits (typically 1000, except CompanyIds which is limited to 1).',
   inputSchema: {
     type: 'object',
     properties: {
@@ -116,7 +116,7 @@ export const getAllCustomersTool: Tool = {
     );
 
     // Ensure required parameters have defaults
-    const requestData = {
+    const requestData: Record<string, unknown> = {
       Extent: {
         Customers: true,
         Addresses: false,
@@ -125,10 +125,20 @@ export const getAllCustomersTool: Tool = {
       Limitation: {
         Count: 100
       },
-      // If no meaningful filters provided, default to empty CustomerIds to get results
-      ...(hasFilter ? {} : { CustomerIds: [] }),
       ...inputArgs
     };
+
+    // If no meaningful filters provided, add a default recent date range filter
+    if (!hasFilter) {
+      const endDate = new Date();
+      const startDate = new Date();
+      startDate.setMonth(startDate.getMonth() - 3); // 3 months ago
+      
+      requestData.CreatedUtc = {
+        StartUtc: startDate.toISOString(),
+        EndUtc: endDate.toISOString()
+      };
+    }
 
     const result = await mewsRequest(config, '/api/connector/v1/customers/getAll', requestData);
     return {
