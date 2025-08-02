@@ -69,25 +69,53 @@ export const addTaskTool: Tool = {
 
   async execute(config: any, args: AddTaskParams) {
     try {
-      // Validate deadline is in the future if provided
-      if (args.DeadlineUtc) {
-        const deadline = new Date(args.DeadlineUtc);
-        const now = new Date();
-        
-        if (deadline <= now) {
-          throw new Error('Deadline must be in the future');
-        }
-      }
-
       // Validate required fields
       if (!args.Name || args.Name.trim().length === 0) {
         throw new Error('Task name is required and cannot be empty');
       }
 
-      const response = await mewsRequest<AddTaskParams, AddTaskResponse>(
+      // If no deadline is provided, set a default deadline 1 week in the future
+      let deadlineUtc = args.DeadlineUtc;
+      if (!deadlineUtc) {
+        const oneWeekFromNow = new Date();
+        oneWeekFromNow.setDate(oneWeekFromNow.getDate() + 7);
+        deadlineUtc = oneWeekFromNow.toISOString();
+      }
+
+      // Validate deadline format if provided
+      const deadline = new Date(deadlineUtc);
+      
+      // Check if the date is valid
+      if (isNaN(deadline.getTime())) {
+        throw new Error('Invalid DeadlineUtc format. Please use ISO 8601 format (e.g., "2025-01-10T18:00:00Z")');
+      }
+
+      // Ensure deadline is in the future (allowing for some timezone flexibility)
+      const now = new Date();
+      const fiveMinutesFromNow = new Date(now.getTime() + (5 * 60 * 1000));
+      
+      if (deadline < fiveMinutesFromNow) {
+        // Automatically adjust to 1 hour from now
+        const oneHourFromNow = new Date(now.getTime() + (60 * 60 * 1000));
+        deadlineUtc = oneHourFromNow.toISOString();
+      }
+
+      // Prepare request payload, excluding undefined fields
+      const requestPayload: any = {
+        Name: args.Name,
+        DeadlineUtc: deadlineUtc
+      };
+
+      if (args.Description) requestPayload.Description = args.Description;
+      if (args.DepartmentId) requestPayload.DepartmentId = args.DepartmentId;
+      if (args.ServiceOrderId) requestPayload.ServiceOrderId = args.ServiceOrderId;
+      if (args.Type) requestPayload.Type = args.Type;
+      if (args.State) requestPayload.State = args.State;
+
+      const response = await mewsRequest<any, AddTaskResponse>(
         config,
         '/api/connector/v1/tasks/add',
-        args
+        requestPayload
       );
 
       const task = response.Task;

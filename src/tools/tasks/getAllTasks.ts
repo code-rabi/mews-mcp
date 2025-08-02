@@ -43,7 +43,7 @@ interface GetAllTasksResponse {
 
 export const getAllTasksTool: Tool = {
   name: 'getAllTasks',
-  description: 'Returns all tasks of the enterprise, filtered by identifiers or other filters. Note: At least one filter must be provided (TaskIds, DepartmentIds, ServiceOrderIds, CreatedUtc, ClosedUtc, or DeadlineUtc). All date ranges have a maximum interval of 3 months.',
+  description: 'Returns all tasks of the enterprise, filtered by identifiers or other filters. REQUIRED: At least one filter must be provided (TaskIds, DepartmentIds, ServiceOrderIds, CreatedUtc, ClosedUtc, or DeadlineUtc). LIMITATIONS: Date range filters (CreatedUtc, ClosedUtc, DeadlineUtc) have a maximum interval of 3 months and 1 day. Array filters (TaskIds, DepartmentIds, ServiceOrderIds) are limited to 1000 items each. The Limitation parameter with Count is mandatory for pagination.',
   inputSchema: {
     type: 'object',
     properties: {

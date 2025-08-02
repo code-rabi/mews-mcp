@@ -69,6 +69,20 @@ import { addVouchersTool } from './vouchers/addVouchers.js';
 import { getAllTasksTool } from './tasks/getAllTasks.js';
 import { addTaskTool } from './tasks/addTask.js';
 
+// Loyalty tools
+import { getAllLoyaltyMembershipsTool } from './loyalty/getAllLoyaltyMemberships.js';
+import { addLoyaltyMembershipsTool } from './loyalty/addLoyaltyMemberships.js';
+import { updateLoyaltyMembershipsTool } from './loyalty/updateLoyaltyMemberships.js';
+import { deleteLoyaltyMembershipsTool } from './loyalty/deleteLoyaltyMemberships.js';
+import { getAllLoyaltyProgramsTool } from './loyalty/getAllLoyaltyPrograms.js';
+import { addLoyaltyProgramsTool } from './loyalty/addLoyaltyPrograms.js';
+import { updateLoyaltyProgramsTool } from './loyalty/updateLoyaltyPrograms.js';
+import { deleteLoyaltyProgramsTool } from './loyalty/deleteLoyaltyPrograms.js';
+import { getAllLoyaltyTiersTool } from './loyalty/getAllLoyaltyTiers.js';
+import { addLoyaltyTiersTool } from './loyalty/addLoyaltyTiers.js';
+import { updateLoyaltyTiersTool } from './loyalty/updateLoyaltyTiers.js';
+import { deleteLoyaltyTiersTool } from './loyalty/deleteLoyaltyTiers.js';
+
 // Registry of all available tools
 export const allTools: Tool[] = [
   // Account tools
@@ -139,6 +153,20 @@ export const allTools: Tool[] = [
   // Task tools
   getAllTasksTool,
   addTaskTool,
+  
+  // Loyalty tools
+  getAllLoyaltyMembershipsTool,
+  addLoyaltyMembershipsTool,
+  updateLoyaltyMembershipsTool,
+  deleteLoyaltyMembershipsTool,
+  getAllLoyaltyProgramsTool,
+  addLoyaltyProgramsTool,
+  updateLoyaltyProgramsTool,
+  deleteLoyaltyProgramsTool,
+  getAllLoyaltyTiersTool,
+  addLoyaltyTiersTool,
+  updateLoyaltyTiersTool,
+  deleteLoyaltyTiersTool,
 ];
 
 // Tool lookup map for fast access during execution
