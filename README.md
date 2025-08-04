@@ -10,7 +10,17 @@ This MCP server provides comprehensive access to the Mews hospitality platform A
 
 ## Quick Start
 
-Copy the following JSON and paste it in Claude, Cursor, or any other AI client that supports MCPs:
+### Using Smithery (Recommended)
+
+The easiest way to use this MCP server is through [Smithery](https://smithery.ai), which provides hosted MCP servers:
+
+1. Go to [Smithery](https://smithery.ai) and find the Mews MCP server
+2. Click "Add Configuration" and provide your Mews credentials
+3. Copy the connection URL to your AI client
+
+### Local Installation
+
+For local development or direct installation, copy the following JSON and paste it in Claude, Cursor, or any other AI client that supports MCPs:
 
 ```json
 {

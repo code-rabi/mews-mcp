@@ -27,7 +27,7 @@
     "model-context-protocol",
     "hotel-management"
   ],
-  "author": "code-rabi",
+  "author": "Nitay Rabinovich",
   "license": "MIT",
   "files": [
     "dist/",
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.1",
+    "@smithery/sdk": "^1.5.5",
     "zod": "^3.22.4"
   },
   "devDependencies": {
