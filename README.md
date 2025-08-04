@@ -14,9 +14,11 @@ This MCP server provides comprehensive access to the Mews hospitality platform A
 
 The easiest way to use this MCP server is through [Smithery](https://smithery.ai), which provides hosted MCP servers:
 
-1. Go to [Smithery](https://smithery.ai) and find the Mews MCP server
+1. Go to the [Mews MCP server on Smithery](https://smithery.ai/server/@code-rabi/mews-mcp)
 2. Click "Add Configuration" and provide your Mews credentials
 3. Copy the connection URL to your AI client
+
+> **Demo Environment**: You can test this MCP server using Mews' public demo environment. The demo credentials are already included in the local installation example below and work with the demo API at `https://api.mews-demo.com`. These are publicly available test credentials from the [Mews API documentation](https://mews-systems.gitbook.io/connector-api/guidelines/environments#api-tokens-gross-pricing-environment).
 
 ### Local Installation
 
