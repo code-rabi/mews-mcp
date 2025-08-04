@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/code-rabi/mews-mcp/compare/v1.1.0...v1.1.1) (2025-08-04)
+
+
+### Bug Fixes
+
+* module path for smithery ([bceaf0d](https://github.com/code-rabi/mews-mcp/commit/bceaf0da39230bf0cb75b9c48ad59ed8922d38e3))
+
 # [1.1.0](https://github.com/code-rabi/mews-mcp/compare/v1.0.1...v1.1.0) (2025-08-04)
 
 
