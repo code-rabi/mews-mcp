@@ -1,5 +1,5 @@
 {
-  "name": "@code-rabi/mews-mcp",
+  "name": "mews-mcp",
   "version": "1.0.0",
   "description": "Model Context Protocol server for Mews API integration",
   "main": "dist/index.js",
