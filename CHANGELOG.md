@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Initial CHANGELOG.md file to track project changes
+- Improved semantic-release configuration
 
-## [1.1.1] - 2024-12-29
+## [1.0.0] - 2024-12-29
 
 ### Added
 - Comprehensive Mews API integration with Model Context Protocol
