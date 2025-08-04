@@ -20,16 +20,16 @@ The easiest way to use this MCP server is through [Smithery](https://smithery.ai
 
 > **Demo Environment**: You can test this MCP server using Mews' public demo environment. The demo credentials are already included in the local installation example below and work with the demo API at `https://api.mews-demo.com`. These are publicly available test credentials from the [Mews API documentation](https://mews-systems.gitbook.io/connector-api/guidelines/environments#api-tokens-gross-pricing-environment).
 
-### Local Installation
+### Using with NPX directly 
 
-For local development or direct installation, copy the following JSON and paste it in Claude, Cursor, or any other AI client that supports MCPs:
+To work directly with the published package, copy the following JSON and paste it in Claude, Cursor, or any other AI client that supports MCPs:
 
 ```json
 {
     "mcpServers": {
         "mews-mcp": {
-            "command": "node",
-            "args": ["/path/to/your/mews-mcp/dist/index.js"],
+            "command": "npx",
+            "args": ["-y", "mews-mcp@latest"],
             "env": {
                 "MEWS_CLIENT_TOKEN": "07AB1F14B55C49B8BDD6AD200158423B-273A4497AFF5E20566D7199DB3DC2BA",
                 "MEWS_ACCESS_TOKEN": "BFD4298010F54B069F3DAD20015D53EA-D5561FADFBA4EFC8EA4C179C6BC461F",
