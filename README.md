@@ -6,6 +6,8 @@ A Model Context Protocol (MCP) server for the Mews hospitality platform API. Thi
 
 This MCP server provides comprehensive access to the Mews hospitality platform API, covering customer and company management, reservation operations, financial transactions, account management, configuration settings, and services inventory. It implements the core functionality needed for hospitality management through a standardized Model Context Protocol interface.
 
+> **Disclaimer**: This is an unofficial MCP server for the Mews API and is not affiliated with or officially supported by Mews Systems s.r.o.
+
 ## Quick Start
 
 Copy the following JSON and paste it in Claude, Cursor, or any other AI client that supports MCPs:
