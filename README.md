@@ -4,50 +4,30 @@ A Model Context Protocol (MCP) server for the Mews hospitality platform API. Thi
 
 ## Overview
 
-This MCP server implements **27 Mews API tools** covering the core functionality needed for hospitality management, including customer management, reservations, finance, configuration, and services.
+This MCP server provides comprehensive access to the Mews hospitality platform API, covering customer and company management, reservation operations, financial transactions, account management, configuration settings, and services inventory. It implements the core functionality needed for hospitality management through a standardized Model Context Protocol interface.
 
-## Implemented Tools
+## Quick Start
 
-### 🏢 Account Management (2 tools)
-- `getAllAddresses` - Retrieve account addresses
-- `addAddresses` - Add new addresses to accounts
+Copy the following JSON and paste it in Claude, Cursor, or any other AI client that supports MCPs:
 
-### 👥 Customer Management (5 tools)  
-- `getAllCustomers` - Retrieve customers with filtering
-- `addCustomer` - Create new customers
-- `updateCustomers` - Update customer information
-- `deleteCustomers` - Remove customers
-- `mergeCustomers` - Merge duplicate customers
+```json
+{
+    "mcpServers": {
+        "mews-mcp": {
+            "command": "node",
+            "args": ["/path/to/your/mews-mcp/dist/index.js"],
+            "env": {
+                "MEWS_CLIENT_TOKEN": "07AB1F14B55C49B8BDD6AD200158423B-273A4497AFF5E20566D7199DB3DC2BA",
+                "MEWS_ACCESS_TOKEN": "BFD4298010F54B069F3DAD20015D53EA-D5561FADFBA4EFC8EA4C179C6BC461F",
+                "MEWS_CLIENT": "mews-mcp/1.0.0",
+                "MEWS_BASE_URL": "https://api.mews-demo.com"
+            }
+        }
+    }
+}
+```
 
-### 🏢 Company Management (4 tools)
-- `getAllCompanies` - Retrieve companies with filtering
-- `addCompany` - Create new companies
-- `updateCompanies` - Update company information  
-- `deleteCompanies` - Remove companies
-
-### 🏨 Reservation Management (3 tools)
-- `getAllReservations` - Retrieve reservations with filtering
-- `addReservation` - Create new reservations
-- `updateReservations` - Update reservation details
-
-### ⚙️ Configuration (7 tools)
-- `getConfiguration` - Get enterprise and client configuration
-- `getAllCountries` - Get supported countries
-- `getAllCurrencies` - Get supported currencies
-- `getAllTaxEnvironments` - Get tax environments
-- `getAllTaxations` - Get taxation rules
-- `getAllLanguages` - Get supported languages
-- `getLanguageTexts` - Get translations
-
-### 💰 Finance (3 tools)
-- `getAllBills` - Retrieve billing information
-- `getAllAccountingItems` - Get accounting transactions
-- `addAccountingItems` - Post charges and payments
-
-### 🛏️ Services & Inventory (3 tools)
-- `getAllServices` - Get available services
-- `getAllSpaces` - Get spaces/rooms inventory
-- `getAllSpaceCategories` - Get space categorization
+> **Note**: The tokens above are public demo credentials from [Mews API documentation](https://mews-systems.gitbook.io/connector-api/guidelines/environments#api-tokens-gross-pricing-environment). Replace the `args` path with your actual installation path.
 
 ## Features
 
@@ -75,6 +55,8 @@ export MEWS_CLIENT_TOKEN="your-client-token"
 export MEWS_ACCESS_TOKEN="your-access-token"
 export MEWS_CLIENT="your-client-identifier"
 ```
+
+For more information about authentication and obtaining tokens, see the [Mews Authentication Guide](https://mews-systems.gitbook.io/connector-api/guidelines/authentication).
 
 ## Usage
 
