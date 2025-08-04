@@ -94,4 +94,7 @@ public
 
 # Temporary folders
 tmp/
-temp/ 
+temp/
+
+# Cursor IDE configuration (may contain sensitive keys)
+.cursor/ 
