@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/code-rabi/mews-mcp/compare/v1.0.1...v1.1.0) (2025-08-04)
+
+
+### Features
+
+* smithery initial ([fbf3745](https://github.com/code-rabi/mews-mcp/commit/fbf37453039b7a284836017cf680dc60089e1663))
+
 ## [1.0.1](https://github.com/code-rabi/mews-mcp/compare/v1.0.0...v1.0.1) (2025-08-04)
 
 
