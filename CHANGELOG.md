@@ -16,6 +16,28 @@
 
 * Add 26 high-priority Mews API tickets ([174ddcb](https://github.com/code-rabi/mews-mcp/commit/174ddcb4bd0e3e3595e362d6b796ecd2d3c7e0d8))
 * add automated NPM publishing with semantic release ([08f8e71](https://github.com/code-rabi/mews-mcp/commit/08f8e71637a4d8bfd16261a27330c6922ce42609))
+* add Desktop Extension support with GitHub Actions ([546e3b6](https://github.com/code-rabi/mews-mcp/commit/546e3b61c7fe6a3c32588e0f17a82b9f2c7e7f30))
+* Implement task management tools ([9ae8f41](https://github.com/code-rabi/mews-mcp/commit/9ae8f4159186ca1a60025f1fb364f005a0b24c71))
+* smithery initial ([d393081](https://github.com/code-rabi/mews-mcp/commit/d393081a27ff3b468b27a4a39af23f7f10fba00d))
+
+# 1.0.0 (2025-08-04)
+
+
+### Bug Fixes
+
+* add missing conventional-changelog-conventionalcommits dependency ([e4f31aa](https://github.com/code-rabi/mews-mcp/commit/e4f31aa04f9944c6cb4cc00f636a68fe0aface7a))
+* change package name from @code-rabi/mews-mcp to mews-mcp ([266d4bf](https://github.com/code-rabi/mews-mcp/commit/266d4bf557532eeef4be3a9ce367ccb75c4dac1f))
+* Correct task tool naming and improve documentation ([715f289](https://github.com/code-rabi/mews-mcp/commit/715f289439db481d7f98ecfcb8451c3ae022b4c6))
+* fix release yml ([4f2b86a](https://github.com/code-rabi/mews-mcp/commit/4f2b86a63881f3514dfd189f6e6829dd024b03bf))
+* improve npm release ([413055a](https://github.com/code-rabi/mews-mcp/commit/413055ab163c4bc441a3b2914c750e8d8ce7c4c1))
+* module path for smithery ([7a1bff3](https://github.com/code-rabi/mews-mcp/commit/7a1bff3896e54ff638a2391d7717bf9a856179c8))
+* try another fix for release ([b6f075e](https://github.com/code-rabi/mews-mcp/commit/b6f075e90a5370dc9fa0c396420052879f45962f))
+
+
+### Features
+
+* Add 26 high-priority Mews API tickets ([174ddcb](https://github.com/code-rabi/mews-mcp/commit/174ddcb4bd0e3e3595e362d6b796ecd2d3c7e0d8))
+* add automated NPM publishing with semantic release ([08f8e71](https://github.com/code-rabi/mews-mcp/commit/08f8e71637a4d8bfd16261a27330c6922ce42609))
 * Implement task management tools ([9ae8f41](https://github.com/code-rabi/mews-mcp/commit/9ae8f4159186ca1a60025f1fb364f005a0b24c71))
 * smithery initial ([d393081](https://github.com/code-rabi/mews-mcp/commit/d393081a27ff3b468b27a4a39af23f7f10fba00d))
 
