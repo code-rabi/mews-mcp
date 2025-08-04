@@ -43,19 +43,6 @@ For local development or direct installation, copy the following JSON and paste 
 
 > **Note**: The tokens above are public demo credentials from [Mews API documentation](https://mews-systems.gitbook.io/connector-api/guidelines/environments#api-tokens-gross-pricing-environment). Replace the `args` path with your actual installation path.
 
-## Configuration
-
-Set up your Mews API credentials in environment variables or configuration:
-
-```bash
-export MEWS_BASE_URL="https://demo.mews.li"
-export MEWS_CLIENT_TOKEN="your-client-token"
-export MEWS_ACCESS_TOKEN="your-access-token"
-export MEWS_CLIENT="your-client-identifier"
-```
-
-For more information about authentication and obtaining tokens, see the [Mews Authentication Guide](https://mews-systems.gitbook.io/connector-api/guidelines/authentication).
-
 
 ## License
 
