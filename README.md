@@ -31,22 +31,6 @@ Copy the following JSON and paste it in Claude, Cursor, or any other AI client t
 
 > **Note**: The tokens above are public demo credentials from [Mews API documentation](https://mews-systems.gitbook.io/connector-api/guidelines/environments#api-tokens-gross-pricing-environment). Replace the `args` path with your actual installation path.
 
-## Features
-
-- **Type-safe**: Full TypeScript implementation with comprehensive type definitions
-- **Error handling**: Robust error handling and validation
-- **Pagination**: Support for paginated responses where applicable
-- **Filtering**: Extensive filtering options for data retrieval
-- **Documentation**: Each tool includes detailed parameter documentation
-- **MCP compliance**: Follows Model Context Protocol standards
-
-## Installation
-
-```bash
-npm install
-npm run build
-```
-
 ## Configuration
 
 Set up your Mews API credentials in environment variables or configuration:
@@ -60,38 +44,6 @@ export MEWS_CLIENT="your-client-identifier"
 
 For more information about authentication and obtaining tokens, see the [Mews Authentication Guide](https://mews-systems.gitbook.io/connector-api/guidelines/authentication).
 
-## Usage
-
-The server can be used with any MCP-compatible client. Tools follow the Mews API patterns:
-
-- All endpoints use POST requests
-- Authentication is handled automatically via configuration
-- Responses include full JSON data from Mews API
-- Comprehensive error messages for debugging
-
-## Tool Categories
-
-### High Priority (Core Operations)
-✅ Customer and company management  
-✅ Reservation CRUD operations  
-✅ Financial operations  
-✅ Configuration endpoints
-
-### Medium Priority (Enhanced Features)
-🔄 Account management (partial)  
-🔄 Service management (partial)  
-📋 Export functionality (planned)  
-📋 Advanced financial tools (planned)
-
-### Comprehensive Coverage
-
-This implementation covers the **core 80%** of Mews API functionality needed for most hospitality operations. The tools are production-ready and follow Mews API best practices.
-
-## API Documentation
-
-For detailed API documentation, refer to:
-- [Mews Connector API Documentation](https://mews-systems.gitbook.io/connector-api/operations)
-- [Implementation Tickets](./tickets/) - Detailed implementation specifications
 
 ## License
 
