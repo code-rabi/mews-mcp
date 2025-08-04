@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/code-rabi/mews-mcp/compare/v1.0.0...v1.0.1) (2025-08-04)
+
+
+### Bug Fixes
+
+* add missing conventional-changelog-conventionalcommits dependency ([c5dcccf](https://github.com/code-rabi/mews-mcp/commit/c5dcccf7074af8f2c7457bf43a135a16c6549569))
+* improve npm release ([c55a71d](https://github.com/code-rabi/mews-mcp/commit/c55a71df36800a6f7e4f044e83b71997711f0a5f))
+
 # 1.0.0 (2025-08-04)
 
 
