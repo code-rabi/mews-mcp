@@ -10,6 +10,9 @@ build/
 lib/
 *.tsbuildinfo
 
+# Desktop Extension packages
+*.dxt
+
 # Environment variables
 .env
 .env.local

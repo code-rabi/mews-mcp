@@ -25,6 +25,15 @@ export const configSchema = z.object({
 // Load configuration from environment variables or config object
 function loadConfig(configOverride?: z.infer<typeof configSchema>): MewsAuthConfig {
   try {
+    console.error('[DEBUG] Loading configuration...');
+    console.error('[DEBUG] Environment variables:', {
+      MEWS_CLIENT_TOKEN: process.env.MEWS_CLIENT_TOKEN ? '***SET***' : 'NOT_SET',
+      MEWS_ACCESS_TOKEN: process.env.MEWS_ACCESS_TOKEN ? '***SET***' : 'NOT_SET',
+      MEWS_CLIENT: process.env.MEWS_CLIENT || 'NOT_SET',
+      MEWS_BASE_URL: process.env.MEWS_BASE_URL || 'NOT_SET'
+    });
+    console.error('[DEBUG] Config override:', configOverride ? 'PROVIDED' : 'NOT_PROVIDED');
+    
     // Use config override from Smithery if provided, otherwise use environment variables
     const config = MewsAuthConfigSchema.parse({
       clientToken: configOverride?.clientToken || process.env.MEWS_CLIENT_TOKEN,
@@ -32,8 +41,11 @@ function loadConfig(configOverride?: z.infer<typeof configSchema>): MewsAuthConf
       client: configOverride?.client || process.env.MEWS_CLIENT || 'mews-mcp/1.0.0',
       baseUrl: configOverride?.baseUrl || process.env.MEWS_BASE_URL || 'https://api.mews.com',
     });
+    
+    console.error('[DEBUG] Configuration loaded successfully');
     return config;
   } catch (error) {
+    console.error('[ERROR] Failed to load configuration:', error);
     throw new McpError(
       ErrorCode.InvalidRequest,
       `Invalid Mews configuration. Please set MEWS_CLIENT_TOKEN, MEWS_ACCESS_TOKEN environment variables. ${error}`
@@ -123,6 +135,8 @@ function initServer(configOverride?: z.infer<typeof configSchema>) {
     },
 
     stdioServer: async () => {
+      console.error('[DEBUG] Initializing stdio server...');
+      
       const server = new Server(
         {
           name: 'mews-mcp',
@@ -135,21 +149,32 @@ function initServer(configOverride?: z.infer<typeof configSchema>) {
         }
       );
 
+      console.error('[DEBUG] Setting up request handlers...');
+
       // Set up request handlers for stdio mode
       server.setRequestHandler(ListToolsRequestSchema, async () => {
-        return { 
-          tools: getToolDefinitions() 
-        };
+        console.error('[DEBUG] Handling ListTools request');
+        try {
+          const tools = getToolDefinitions();
+          console.error(`[DEBUG] Returning ${tools.length} tools`);
+          return { tools };
+        } catch (error) {
+          console.error('[ERROR] Failed to get tool definitions:', error);
+          throw error;
+        }
       });
 
       server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const { name, arguments: args = {} } = request.params;
+        console.error(`[DEBUG] Handling CallTool request for: ${name}`);
         
         try {
           const config = loadConfig(configOverride);
           const result = await executeTool(name, config, args);
+          console.error(`[DEBUG] Tool ${name} executed successfully`);
           return result;
         } catch (error) {
+          console.error(`[ERROR] Tool ${name} execution failed:`, error);
           if (error instanceof McpError) {
             throw error;
           }
@@ -161,9 +186,10 @@ function initServer(configOverride?: z.infer<typeof configSchema>) {
         }
       });
       
+      console.error('[DEBUG] Creating transport and connecting...');
       const transport = new StdioServerTransport();
       await server.connect(transport);
-      console.error('Mews MCP server running on stdio');
+      console.error('[INFO] Mews MCP server running on stdio');
     }
   };
 }
@@ -173,15 +199,31 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
   return initServer(config).smitheryServer();
 }
 
-// Fallback for stdio mode (when not running in Smithery)
+// Check if we should run stdio server (only when running directly, not as module)
 async function main() {
-  // Check if running directly (not in Smithery) using ES module equivalent
-  if (import.meta.url === `file://${process.argv[1]}`) {
+  console.error('[DEBUG] Main function called');
+  console.error('[DEBUG] import.meta.url:', import.meta.url);
+  console.error('[DEBUG] process.argv[1]:', process.argv[1]);
+  console.error('[DEBUG] process.argv:', process.argv);
+  
+  // Only run stdio server if this file is the main entry point
+  // This prevents conflicts when the file is imported as a module
+  const isMainModule = import.meta.url === `file://${process.argv[1]}` || 
+                       process.argv[1]?.endsWith('index.js') ||
+                       process.argv[1]?.endsWith('dist/index.js');
+  
+  if (isMainModule) {
+    console.error('[DEBUG] Running as main module - starting stdio server...');
     await initServer().stdioServer();
+  } else {
+    console.error('[DEBUG] Running as imported module - skipping stdio server initialization');
   }
 }
 
-main().catch((error) => {
-  console.error('Server failed to start:', error);
-  process.exit(1);
-});
+// Only run main if this is not being imported as a module
+if (typeof process !== 'undefined' && process.argv) {
+  main().catch((error) => {
+    console.error('[ERROR] Server failed to start:', error);
+    process.exit(1);
+  });
+}

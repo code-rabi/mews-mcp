@@ -1,0 +1,69 @@
+{
+  "dxt_version": "0.1",
+  "name": "mews-mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol server for Mews API integration",
+  "author": {
+    "name": "Nitay Rabinovich",
+    "url": "https://github.com/code-rabi/mews-mcp"
+  },
+  "homepage": "https://github.com/code-rabi/mews-mcp",
+  "documentation": "https://github.com/code-rabi/mews-mcp",
+  "support": "https://github.com/code-rabi/mews-mcp",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
+      "env": {
+        "MEWS_CLIENT_TOKEN": "${user_config.clientToken}",
+        "MEWS_ACCESS_TOKEN": "${user_config.accessToken}",
+        "MEWS_CLIENT": "${user_config.client}",
+        "MEWS_BASE_URL": "${user_config.baseUrl}"
+      }
+    }
+  },
+  "tools": [],
+  "user_config": {
+    "clientToken": {
+      "type": "string",
+      "title": "Client Token",
+      "description": "Mews API client token",
+      "required": true,
+      "sensitive": true
+    },
+    "accessToken": {
+      "type": "string",
+      "title": "Access Token", 
+      "description": "Mews API access token",
+      "required": true,
+      "sensitive": true
+    },
+    "client": {
+      "type": "string",
+      "title": "Client Identifier",
+      "description": "Client identifier for API requests",
+      "required": false,
+      "default": "mews-mcp"
+    },
+    "baseUrl": {
+      "type": "string",
+      "title": "Base URL",
+      "description": "Mews API base URL",
+      "required": false,
+      "default": "https://api.mews.com"
+    }
+  },
+  "keywords": [
+    "Mews",
+    "Hotels"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/code-rabi/mews-mcp.git"
+  }
+}
