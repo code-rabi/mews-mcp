@@ -1,5 +1,7 @@
 # Mews MCP Server
 
+[![smithery badge](https://smithery.ai/badge/@code-rabi/mews-mcp)](https://smithery.ai/server/@code-rabi/mews-mcp)
+
 A Model Context Protocol (MCP) server for the Mews hospitality platform API. This server provides comprehensive access to Mews operations through a standardized interface.
 
 ## Overview
