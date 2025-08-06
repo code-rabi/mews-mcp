@@ -202,15 +202,15 @@ export default function ({ config }: { config: z.infer<typeof configSchema> }) {
 // Check if we should run stdio server (only when running directly, not as module)
 async function main() {
   console.error('[DEBUG] Main function called');
-  console.error('[DEBUG] import.meta.url:', import.meta.url);
   console.error('[DEBUG] process.argv[1]:', process.argv[1]);
   console.error('[DEBUG] process.argv:', process.argv);
   
   // Only run stdio server if this file is the main entry point
   // This prevents conflicts when the file is imported as a module
-  const isMainModule = import.meta.url === `file://${process.argv[1]}` || 
-                       process.argv[1]?.endsWith('index.js') ||
-                       process.argv[1]?.endsWith('dist/index.js');
+  // For CommonJS builds, we check argv instead of import.meta.url
+  const isMainModule = process.argv[1]?.endsWith('index.js') ||
+                       process.argv[1]?.endsWith('dist/index.js') ||
+                       process.argv[1]?.endsWith('src/index.ts');
   
   if (isMainModule) {
     console.error('[DEBUG] Running as main module - starting stdio server...');
