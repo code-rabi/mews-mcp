@@ -4,6 +4,10 @@
 
 A Model Context Protocol (MCP) server for the Mews hospitality platform API. This server provides comprehensive access to Mews operations through a standardized interface.
 
+<a href="https://glama.ai/mcp/servers/@code-rabi/mews-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@code-rabi/mews-mcp/badge" alt="Mews MCP server" />
+</a>
+
 ## Overview
 
 This MCP server provides comprehensive access to the Mews hospitality platform API, covering customer and company management, reservation operations, financial transactions, account management, configuration settings, and services inventory. It implements the core functionality needed for hospitality management through a standardized Model Context Protocol interface.
@@ -48,4 +52,4 @@ To work directly with the published package, copy the following JSON and paste i
 
 ## License
 
-MIT License - see LICENSE file for details. 
+MIT License - see LICENSE file for details.
